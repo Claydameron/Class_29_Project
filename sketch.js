@@ -18,9 +18,6 @@ function setup() {
   object = Bodies.circle(50,250,20);
   World.add(world,object);
 
-  imageMode(CENTER);
-  image(objectImg,object.position.x,object.position.y,40,40);
- 
   ground1 = new Ground(350,455,175,15);
   boxB11 = new BoxB(350,425,35,35);
   boxB12 = new BoxB(315,425,35,35);
@@ -43,7 +40,7 @@ function setup() {
   boxO23 = new BoxO(785,190,35,35);
   boxY21 = new BoxY(750,155,35,35);
 
-  sling = new Slingshot(object.body,{x:200,y:100});
+  sling = new Slingshot(object,{x:100,y:150});
 
   Engine.run(engine);
 }
@@ -52,7 +49,8 @@ function draw() {
   background(0);  
   drawSprites();
 
-  
+  imageMode(CENTER);
+  image(objectImg ,object.position.x,object.position.y,40,40)
 
   ground1.display();
   boxB11.display();
@@ -76,16 +74,15 @@ function draw() {
   boxO23.display();
   boxY21.display();
 
-  object.display();
   
-  //sling.display();
+  sling.display();
 
 }
 
-/*function mouseDragged(){
-  Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY})
+function mouseDragged(){
+  Matter.Body.setPosition(object,{x:mouseX,y:mouseY})
 }
 
 function mouseReleased() {
   sling.fly();
-}*/
+}
